@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Cube Solve Analytics",
+    "version": "2.1",
+    "description": "Provides additional analytics, charts, and statistics for cstimer.net solving sessions. Created by Emil.",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://cstimer.net/*"
+            ],
+            "js": [
+                "chart.min.js",
+                "chartjs-plugin-zoom.min.js",
+                "content.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "all_frames": true,
+            "run_at": "document_end"
+        }
+    ],
+    "icons": {
+        "128": "icon.png"
+    },
+    "permissions": [
+        "storage"
+    ]
+}

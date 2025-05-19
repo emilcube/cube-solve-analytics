@@ -1,0 +1,304 @@
+#cube-analytics {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    font-family: Arial, sans-serif;
+    max-height: 32px;
+    overflow: hidden;
+    width: auto;
+    transition: none;
+}
+
+#cube-analytics.expanded {
+    max-height: 70vh;
+    width: 600px;
+}
+
+#cube-analytics.fullscreen {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0;
+    max-height: none !important;
+}
+
+.toolbar {
+    padding: 4px 8px;
+    background: #f8f9fa;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.tabs {
+    display: none;
+    gap: 2px;
+    margin-right: auto;
+}
+
+.tab-btn {
+    border: none;
+    background: #e0e0e0;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #666;
+}
+
+.tab-btn.active {
+    background: #2196F3;
+    color: white;
+}
+
+.controls {
+    display: flex;
+    gap: 4px;
+}
+
+.controls button {
+    border: none;
+    background: none;
+    padding: 2px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #666;
+}
+
+.session-name {
+    font-size: 11px;
+    color: #666;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.chart-container {
+    height: calc(100vh - 120px);
+    padding: 12px;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 8px;
+    padding: 12px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 8px;
+    background: #f5f6fa;
+    border-radius: 4px;
+    font-size: 12px;
+    min-width: 140px;
+}
+
+.stat-key {
+    color: #666;
+    white-space: nowrap;
+}
+
+.stat-val {
+    font-weight: 600;
+    color: #2196F3;
+    margin-left: 10px;
+}
+
+#cube-analytics.collapsed {
+    min-width: 100px; /* was 140px */
+    max-width: 120px; /* was 160px */
+    box-shadow: none;
+}
+
+#cube-analytics.collapsed .content {
+    display: none;
+}
+
+#cube-analytics.collapsed .session-name {
+    max-width: 70px; /* was 80px */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#cube-analytics.collapsed .controls {
+    gap: 2px;
+}
+
+#cube-analytics.collapsed .refresh-btn {
+    display: none;
+}
+
+#cube-analytics.collapsed .fullscreen-btn {
+    display: none !important;
+}
+
+#cube-analytics.expanded .tabs {
+    display: flex;
+}
+
+.tab-content {
+    display: none;
+    height: calc(100% - 40px);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.chart-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: auto;
+    z-index: 100;
+}
+
+.tab-content.chart-tab.active .chart-controls {
+    display: block;
+}
+
+.reset-zoom-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    backdrop-filter: blur(2px);
+}
+
+.reset-zoom-btn:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chartjs-render-monitor [data-label="Trend Line"] {
+    filter: drop-shadow(0 2px 4px rgba(98, 0, 234, 0.2));
+}
+
+/* Календарь */
+.calendar-year {
+    margin-bottom: 2rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+}
+
+.calendar-month {
+    position: relative;
+}
+
+.calendar-month-header {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.calendar-day {
+    width: 12px;
+    height: 12px;
+    background-color: #eee;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.calendar-day.active:hover {
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+.distribution-controls {
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.distribution-controls input {
+    width: 80px;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.distribution-controls button {
+    padding: 4px 12px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.distribution-container {
+    height: calc(100vh - 160px);
+    padding: 12px;
+}
+
+.stats-group {
+    margin-bottom: 12px;
+    grid-column: 1 / -1;
+}
+
+.group-title {
+    color: #7f8c8d;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin: 4px 0;
+}
+
+.group-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.stats-group {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+}
+
+.daily-tab .chart-container {
+    height: calc(100vh - 120px);
+    padding: 12px;
+}
+
+.reset-zoom-btn-daily {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    backdrop-filter: blur(2px);
+}
