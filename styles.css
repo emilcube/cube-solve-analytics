@@ -1,3 +1,15 @@
+/*!
+ * styles.css
+ * Description: Core styles for the cube-solve-analytics widget interface, including toolbar, tabs, charts, and calendar.
+ *
+ * Author: Emil
+ * License: GPL-3.0-or-later
+ *
+ * This stylesheet is part of the cube-solve-analytics project.
+ *
+ * This project includes third-party libraries licensed under MIT license.
+ */
+
 #cube-analytics {
     position: fixed;
     top: 5px;
