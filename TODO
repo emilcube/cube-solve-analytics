@@ -1,0 +1,19 @@
+README.md:
+chrome://extensions/
+https://cstimer.net/
+
+Не используете удалённый код или eval – все скрипты и библиотеки должны быть упакованы вместе с расширением и указаны в CSP как self.
+Включите лицензию Chart.js и любые другие сторонние лицензии в ваш пакет.
+Предоставите корректную политику конфиденциальности и полное метаданные (иконка, скриншоты, описание).
+Объявите все необходимые разрешения (в вашем случае "storage").
+
+
+TODO:
+
+Time - in UTC! I need local time!
+- DONE
+
+"Daily" chart - what gonna happen if there is one solve for this day? Maybe should skip? A low amount of solves
+For "Daily" chart - minimum - its 5 solves? to make result show
+
+Maybe add in "Stats" some dynamic values
