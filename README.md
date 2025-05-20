@@ -14,11 +14,16 @@
 
 ## Installation
 
-1. Clone or download this repository:
-
+1. Clone this repository **or download it as a ZIP archive**:
    ```bash
    git clone https://github.com/emilcube/cube-solve-analytics.git
    ```
+
+   Or, if you’re not using Git:
+   * Click the green **“Code”** button
+   * Choose **“Download ZIP”**
+   * Then unzip the archive to a convenient folder on your computer
+
 2. Open Chrome and go to `chrome://extensions/`.
 3. Enable **Developer mode** in the top‑right corner.
 4. Click **Load unpacked** and select the `cube-solve-analytics` folder.
