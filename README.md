@@ -33,8 +33,7 @@
 
 ## Usage
 
-* In the top-right corner, there's an expandable panel labeled "Session <your_current_session>".
-If the label doesn't appear, try switching the website language to English on [cstimer.net](https://cstimer.net) (go to Option -> Language).
+* In the top-right corner, there's an expandable panel labeled "Session <your_current_session>". The label will not appear if there is no solution for the selected session.
 * Click the ▶️ toggle button to expand or collapse the analytics panel.
 * Switch between **Stats**, **Chart**, **Daily**, **Calendar**, and **Distribution** tabs.
 * Use the fullscreen ⛶ button for a larger view.
