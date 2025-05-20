@@ -145,6 +145,10 @@ class CubeAnalytics {
       return acc;
     }, {});
 
+    // Рассчитываем максимальное количество решений
+    const counts = Object.values(dailyCounts);
+    const maxCount = counts.length ? Math.max(...counts) : 0;
+
     // Создаем календарь
     const years = [...new Set(solves.map(s => s.date.getFullYear()))].sort();
 
@@ -152,12 +156,10 @@ class CubeAnalytics {
       const yearDiv = document.createElement('div');
       yearDiv.className = 'calendar-year';
 
-      // Заголовок года
       const yearHeader = document.createElement('h3');
       yearHeader.textContent = year;
       yearDiv.appendChild(yearHeader);
 
-      // Сетка месяцев
       const grid = document.createElement('div');
       grid.className = 'calendar-grid';
 
@@ -165,14 +167,12 @@ class CubeAnalytics {
         const monthDiv = document.createElement('div');
         monthDiv.className = 'calendar-month';
 
-        // Заголовок месяца
         const monthName = new Date(year, month, 1).toLocaleString('default', { month: 'short' });
         const monthHeader = document.createElement('div');
         monthHeader.className = 'calendar-month-header';
         monthHeader.textContent = monthName;
         monthDiv.appendChild(monthHeader);
 
-        // Ячейки дней
         const daysDiv = document.createElement('div');
         daysDiv.className = 'calendar-days';
 
@@ -186,12 +186,12 @@ class CubeAnalytics {
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         for (let day = 1; day <= daysInMonth; day++) {
           const date = new Date(year, month, day);
-          const dateStr = date.toISOString().split('T')[0];
+          const dateStr = this.getLocalDateString(date);
           const count = dailyCounts[dateStr] || 0;
 
           const dayCell = document.createElement('div');
           dayCell.className = `calendar-day ${count > 0 ? 'active' : ''}`;
-          dayCell.style.backgroundColor = this.getColorForCount(count);
+          dayCell.style.backgroundColor = this.getColorForCount(count, maxCount); // Передаем maxCount
           dayCell.title = `${dateStr}: ${count} solves`;
           daysDiv.appendChild(dayCell);
         }
@@ -205,12 +205,11 @@ class CubeAnalytics {
     });
   }
 
-  getColorForCount(count) {
-    const maxCount = 130; // подгоним под твои реальные максимумы
-    const normalized = Math.log(1 + count) / Math.log(1 + maxCount); // логарифм
+  getColorForCount(count, maxCount) {
+    const normalized = Math.log(1 + count) / Math.log(1 + maxCount || 1); // zero deletion protection
     const hue = 120;
     const saturation = 80;
-    const lightness = 90 - normalized * 60; // от 90 до 30
+    const lightness = 90 - normalized * 60;
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
 
